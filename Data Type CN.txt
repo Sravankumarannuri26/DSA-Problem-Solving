@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class Solution {
+    public static int dataTypes(String input) {
+        if (input.equals("Integer") || input.equals("Float"))
+            return 4;
+        else if (input.equals("Long") || input.equals("Double"))
+            return 8;
+        else if (input.equals("Character"))
+            return 1;
+        else
+            return 0;
+    }
+}
