@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+ 
+
+public class Main {
+
+    
+
+    public static void main(String[] args) {
+
+        // Write your code here
+
+        Scanner sc=new Scanner(System.in);
+
+        int x=sc.nextInt();
+
+        int sumeven=0,sumodd=0;
+
+        while(x!=0)
+
+        {
+
+            int d=x%10;
+
+            if(d%2==0)
+
+            sumeven=sumeven+d;
+
+            else
+
+            sumodd=sumodd+d;
+
+            x=x/10;
+
+        }
+
+        System.out.println(sumeven+" "+sumodd);
+
+ 
+
+    }
+
+}
