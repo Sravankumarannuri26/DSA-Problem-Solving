@@ -1,0 +1,63 @@
+//brute
+
+
+
+import java.util.*;
+
+public class Solution {
+    public static List<Integer> majorityElement(int[] v) {
+        List<Integer> ls = new ArrayList<>();
+        int n = v.length;
+
+        for (int i = 0; i < n; i++) {
+            if (ls.size() == 0 || ls.get(0) != v[i]) {
+                int cnt = 0;
+                for (int j = 0; j < n; j++) {
+                    if (v[j] == v[i]) {
+                        cnt++;
+                    }
+                    if (cnt > n / 3) {
+                        ls.add(v[i]);
+                        break;
+                    }
+                }
+                if (ls.size() == 2) {
+                    break;
+                }
+            }
+        }
+        return ls;
+    }
+}
+
+
+
+///better
+
+
+
+import java.util.*;
+
+public class Solution {
+    public static List<Integer> majorityElement(int[] v) {
+        List<Integer> ls = new ArrayList<>();
+        int n = v.length;
+        int mini = (n / 3) + 1;
+        Map<Integer, Integer> myMap = new HashMap<>();
+
+        for (int i = 0; i < v.length; i++) {
+            int count = myMap.getOrDefault(v[i], 0); // get current count or 0 if not present
+            myMap.put(v[i], count + 1);
+
+            if (count + 1 == mini) {
+                ls.add(v[i]);
+            }
+        }
+
+        List<Integer> sortedList = new ArrayList<>(ls);
+        sortedList.sort(Comparator.naturalOrder());
+        return sortedList;
+
+
+    }
+}
