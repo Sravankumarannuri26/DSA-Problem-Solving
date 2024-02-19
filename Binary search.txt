@@ -1,0 +1,21 @@
+public class Solution {
+    public static int binarySearch(int nums[], int low, int high, int target) {
+        if (low > high) return -1;
+
+        int mid = low + (high - low) / 2;  // Corrected the calculation of mid
+
+        if (nums[mid] == target) return mid;
+        if (nums[mid] < target) return binarySearch(nums, mid + 1, high, target);
+        return binarySearch(nums, low, mid - 1, target);  // Added return statement
+    }
+    public static int search(int []nums, int target) {
+        
+
+    
+        int n = nums.length;
+        int low = 0;
+        int high = n - 1;
+        return binarySearch(nums, low, high, target);
+    }
+    
+}
