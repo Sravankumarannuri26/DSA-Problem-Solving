@@ -1,0 +1,37 @@
+class Solution {
+    public static boolean searchElement(int[] nums, int n, int key) {
+        int low = 0, high = n - 1, mid;
+        while (low <= high) {
+            mid = low + (high - low) / 2;
+            if (nums[mid] == key)
+                return true;
+            if (nums[mid] == nums[low] && nums[mid] == nums[high]) {
+                low = low + 1;
+                high = high - 1;
+                continue;
+            }
+            // left half is sorted
+            if (nums[low] <= nums[mid]) {
+                if (nums[low] <= key && key <= nums[mid]) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            }
+            /// right half is sorted
+            if (nums[high] >= nums[mid]) {
+                if (nums[high] >= key && key >= nums[mid]) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean search(int[] nums, int target) {
+        int n = nums.length;
+        return searchElement(nums, n, target);
+    }
+}
