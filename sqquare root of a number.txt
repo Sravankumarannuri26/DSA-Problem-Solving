@@ -1,0 +1,24 @@
+import java.util.*;
+import java.io.*;
+
+public class Solution {
+    public static int sqrtn(long n) {
+        int ans = 1;
+        int low = 0, high = (int) n; // Assuming n is within the range of int
+        int mid = 0; // Declare mid here
+        while (low <= high) {
+            mid = low + (high - low) / 2;
+            if ((mid * mid) <= n) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    public static int sqrtN(long N) {
+        return sqrtn(N);
+    }
+}
