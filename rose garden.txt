@@ -1,0 +1,139 @@
+//brute-TLE error
+
+
+
+public class Solution {
+    public static int binarySearch(int v[],int h){
+        int n=v.length;
+        int low=1,high=maxOfArray(v,n),ans=Integer.MAX_VALUE,mid;
+        while(low<=high){
+            mid=low+(high-low)/2;
+            int totHours=totalHours(v,mid);
+            if(totHours<=h){
+                ans=mid;
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+    public static int totalHours(int v[],int mid){
+        int hours=0;
+        for(int i=0;i<v.length;i++){
+            hours+=Math.ceil((double)v[i]/mid);
+        }
+        return hours;
+    }
+    public static int maxOfArray(int v[],int n){
+        int maxElement=Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            maxElement=Math.max(maxElement, v[i]);
+        }
+        return maxElement;
+    }
+    public static int minimumRateToEatBananas(int []v, int h) {
+        return binarySearch(v,h);
+    }
+}
+
+
+
+
+
+//optimal
+
+
+
+
+public class Solution {
+
+    public static int roseGarden(int[] arr, int k, int m) {
+
+ 
+
+        long val = (long) m * k;
+
+        int n = arr.length; 
+
+        if (val > n) return -1;
+
+        
+
+        
+
+        int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
+
+            mini = Math.min(mini, arr[i]);
+
+            maxi = Math.max(maxi, arr[i]);
+
+        }
+
+ 
+
+        
+
+        int low = mini, high = maxi;
+
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            if (possible(arr, mid, m, k)) {
+
+                high = mid - 1;
+
+            } else {
+
+                low = mid + 1;
+
+            }
+
+        }
+
+        return low;
+
+    }
+
+ 
+
+     public static boolean possible(int[] arr, int day, int m, int k) {
+
+        int n = arr.length; 
+
+        int cnt = 0;
+
+        int noOfB = 0;
+
+        
+
+        for (int i = 0; i < n; i++) {
+
+            if (arr[i] <= day) {
+
+                cnt++;
+
+            } else {
+
+                noOfB += (cnt / k);
+
+                cnt = 0;
+
+            }
+
+        }
+
+        noOfB += (cnt / k);
+
+        return noOfB >= m;
+
+    }
+
+}
+
+
+
