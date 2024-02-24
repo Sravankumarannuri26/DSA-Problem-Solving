@@ -1,0 +1,40 @@
+import java.util.*;
+class Solution {
+    //range is between 1 to max element from the array
+    public static int binarySearch(int arr[],int h){
+        int n=arr.length;
+        int low=1,high=maxElement(arr,n),ans=Integer.MAX_VALUE,mid;
+        while(low<=high){
+            mid=low+(high-low)/2;
+            int totHours=totalHours(arr,mid);
+            if(totHours<=h){
+                ans=mid;
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+    //function for finding total hours
+    public static int totalHours(int arr[],int mid){
+        int hours=0;
+        for(int i=0;i<arr.length;i++){
+            hours+=Math.ceil((double)arr[i]/mid);
+        }
+        return hours;
+    }
+    //finding m,acx element from the array
+    public static int maxElement(int arr[],int n){
+        int maxelement=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            maxelement=Math.max(maxelement,arr[i]);
+        }
+        return maxelement;
+    }
+    public int minEatingSpeed(int[] piles, int h) {
+        return binarySearch(piles,h);
+        
+    }
+}
