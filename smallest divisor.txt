@@ -1,0 +1,61 @@
+//brute
+
+
+public class Solution {
+    public static int smallestDivisor(int arr[], int limit) {
+        // Write your coder here
+        int maxi=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            maxi=Math.max(maxi,arr[i]);
+        }
+        for(int d=1;d<=maxi;d++){
+            int sum=0;
+            for(int i=0;i<arr.length;i++){
+                sum += Math.ceil((double)arr[i] / d);
+
+            }
+            if(sum<=limit) return d;
+
+        }
+        return 0;
+    }
+}
+
+
+
+//optimal
+
+
+public class Solution {
+    public static int binarySearch(int arr[],int limit){
+        int maxi=Integer.MAX_VALUE;
+        for(int i=0;i<arr.length;i++){
+            maxi=Math.max(maxi,arr[i]);
+        }
+        int low=1,high=maxi,mid;
+        while(low<=high){
+            mid=low+(high-low)/2;
+            if(sumOfDivisors(arr,mid)<=limit){
+                high=mid-1;
+
+            }
+            else{
+                low=mid+1;
+            }
+            
+        }
+        return low;
+    }
+    public static int sumOfDivisors(int arr[],int mid){
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum+=Math.ceil((double)arr[i]/mid);
+        }
+        return sum;
+    }
+    
+    public static int smallestDivisor(int arr[], int limit) {
+        return binarySearch(arr, limit);
+    
+}
+}
