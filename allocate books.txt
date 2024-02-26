@@ -1,0 +1,77 @@
+//brute
+
+
+
+import java.util.*;
+public class Solution {
+    public static int countOfStudents(ArrayList<Integer> arr,int pages){
+        int student=1,pagesStudent=0;
+        for(int i=0;i<arr.size();i++){
+            if(pagesStudent+arr.get(i)<=pages){
+                pagesStudent+=arr.get(i);
+            }
+            else{
+                student++;
+                pagesStudent=arr.get(i);
+            }
+        }
+        return student;
+    }
+    public static int findPages(ArrayList<Integer> arr, int n, int m) {
+        if(m>n) return -1;
+        int low=Collections.max(arr);
+        int high=0;
+        for(int i=0;i<arr.size();i++){
+            high+=arr.get(i);
+        }
+        for(int i=low;i<=high;i++){
+            int cntStudnets=countOfStudents(arr,i);
+            if(cntStudnets==m){
+                return i;
+            }
+        }
+        return -1;
+
+    }
+}
+
+
+/optimal
+
+
+
+
+import java.util.*;
+public class Solution {
+    public static int countOfStudents(ArrayList<Integer> arr,int pages){
+        int student=1,pagesStudent=0;
+        for(int i=0;i<arr.size();i++){
+            if(pagesStudent+arr.get(i)<=pages){
+                pagesStudent+=arr.get(i);
+            }
+            else{
+                student++;
+                pagesStudent=arr.get(i);
+            }
+        }
+        return student;
+    }
+    public static int findPages(ArrayList<Integer> arr, int n, int m) {
+        //if no.of students are greater than books then we have to return -1
+        if(m>n) return -1;
+        ///range of maximum number of pages should be minimum is between max of the arr and sum of the arr
+        int low=Collections.max(arr);
+        int high=0,mid;
+        for(int i=0;i<arr.size();i++){
+            high+=arr.get(i);
+        }
+        while(low<=high){
+            mid=low+(high-low)/2;
+            int cntStudent=countOfStudents(arr,mid);
+            if(cntStudent>m) low=mid+1;
+            else high=mid-1;
+            
+        }
+        return low;
+    }
+}
