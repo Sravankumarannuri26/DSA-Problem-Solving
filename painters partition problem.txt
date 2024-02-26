@@ -1,0 +1,40 @@
+//optimal
+
+import java.util.*;
+
+public class Solution 
+{
+    public static int countOfStudents(ArrayList<Integer> arr,int pages){
+        int student=1,pagesStudent=0;
+        for(int i=0;i<arr.size();i++){
+            if(pagesStudent+arr.get(i)<=pages){
+                pagesStudent+=arr.get(i);
+            }
+            else{
+                student++;
+                pagesStudent=arr.get(i);
+            }
+        }
+        return student;
+    }
+    public static int findLargestMinDistance(ArrayList<Integer> boards, int k)
+    {
+        int n=boards.size();
+        if(k>n) return -1;
+        ///range of maximum number of pages should be minimum is between max of the arr and sum of the arr
+        int low=Collections.max(boards);
+        int high=0,mid;
+        for(int i=0;i<boards.size();i++){
+            high+=boards.get(i);
+        }
+        while(low<=high){
+            mid=low+(high-low)/2;
+            int cntStudent=countOfStudents(boards,mid);
+            if(cntStudent>k) low=mid+1;
+            else high=mid-1;
+            
+        }
+        return low;
+    }
+}
+    
