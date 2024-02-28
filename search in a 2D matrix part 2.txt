@@ -1,0 +1,89 @@
+//brute
+
+
+
+import java.util.*;
+public class Solution {
+    public static boolean searchElement(int [][]MATRIX, int target) {
+        int n=MATRIX.length;
+        int m=MATRIX[0].length;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(MATRIX[i][j]==target){
+                    return true;
+                }
+                
+                
+            }
+        }
+        return false;
+    }
+}
+
+
+
+//better
+
+
+
+
+class Solution {
+    public static boolean isFound(int []MATRIX,int m,int target){
+        int low=0,high=m-1,mid;
+        while(low<=high){
+            mid=low+(high-low)/2;
+            if(MATRIX[mid]==target){
+                return true;
+            }
+            else if(MATRIX[mid]>target){
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+        return false;
+    }
+    public boolean searchMatrix(int[][] MATRIX, int target) {
+        int n=MATRIX.length;
+        int m=MATRIX[0].length;
+        for(int i=0;i<n;i++){
+            boolean found=isFound(MATRIX[i],m,target);
+            if(found==true){
+                return true;
+            }
+        
+        }
+        return false;
+        
+    }
+}
+
+
+
+///optimal
+
+
+
+import java.util.*;
+public class Solution {
+    
+    public static boolean searchElement(int [][]MATRIX, int target) {
+    int n=MATRIX.length;
+        int m=MATRIX[0].length;
+       int row=0,col=m-1;
+       while(row<n && col>=0){
+           if(MATRIX[row][col]==target){
+               return true;
+           }
+           else if(MATRIX[row][col]<target){
+               row++;
+           }
+           else{
+               col--;
+           }
+       }
+       return false;
+    
+    
+    }
+
+}
