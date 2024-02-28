@@ -1,0 +1,11 @@
+class Solution {
+    int DivisibleByEight(String s) {
+        int length = s.length();
+        // Extract last 3 digits, if they exist, from the string
+        String str = s.substring(Math.max(0, length - 3), length);
+        // Convert to Integer
+        int num = Integer.parseInt(str);
+        // Check Divisibility
+        return num % 8 == 0 ? 1 : -1;
+    }
+}
