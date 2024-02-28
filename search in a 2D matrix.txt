@@ -1,0 +1,83 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//brute
+
+
+
+
+import java.util.*;
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int n=matrix.length;
+        int m=matrix[0].length;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(matrix[i][j]==target){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//optimal
+
+
+import java.util.ArrayList;
+
+public class Solution {
+    static boolean searchMatrix(ArrayList<ArrayList<Integer>> mat, int target) {
+        int n = mat.size();
+        int m = mat.get(0).size();
+
+        int low=0,high=(n*m-1);
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            int row=mid/m,col=mid%m;
+            if(mat.get(row).get(col)==target){
+                return true;
+            }
+            else if(mat.get(row).get(col)>target){
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+        return false;
+    }
+}
