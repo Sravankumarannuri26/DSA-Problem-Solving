@@ -1,0 +1,41 @@
+Problem statement
+You are given an integer ‘N’. Your task is to print a pattern with the following description
+
+The pattern will consist of ‘N’ lines.
+
+For 1 <= ‘i’ <= ‘N’ ‘i’th line consists of a string of ‘N’  + 1 - ‘i’  ‘*’ characters.
+For example:
+
+If ‘N’ is 5 then the pattern will be.
+
+*****
+****
+***
+**
+*
+
+
+
+
+
+import java.util.*;
+
+public class Solution {
+    public static String[] printPatt(int n) {
+        List<String> patternList = new ArrayList<>();
+
+        for (int i = n; i >= 1; i--) {
+            StringBuilder line = new StringBuilder();
+            for (int j = 1; j <= i; j++) {
+                line.append("*");
+            }
+            patternList.add(line.toString());
+        }
+
+        // Convert the list to an array
+        String[] patternArray = new String[patternList.size()];
+        patternList.toArray(patternArray);
+
+        return patternArray;
+    }
+}
