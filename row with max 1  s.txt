@@ -1,0 +1,81 @@
+//optimal
+
+
+import java.util.ArrayList;
+
+public class Solution {
+    public static int lowerBound(ArrayList<ArrayList<Integer>> matrix, int row, int m, int x) {
+        int low = 0, high = m - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (matrix.get(row).get(mid) >= x) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+
+    public static int maximumOnesRow(ArrayList<ArrayList<Integer>> matrix, int n, int m) {
+        int index = -1;
+        int maxCount = -1;
+        for (int i = 0; i < n; i++) {
+            int cnt_ones = m - lowerBound(matrix, i, m, 1);
+            if (cnt_ones > maxCount) {
+                maxCount = cnt_ones;
+                index = i;
+            }
+        }
+        return index;
+    }
+}
+
+
+
+//better
+
+
+
+import java.util.ArrayList;
+
+public class Solution {
+
+    public static int binarySearch(ArrayList<Integer> row, int m, int target) {
+        int low = 0, high = m - 1, mid;
+        while (low <= high) {
+            mid = low + (high - low) / 2;
+            if (row.get(mid) == target) {
+                return mid; // Found the target in the row
+            } else if (row.get(mid) < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1; // Target not found in the row
+    }
+
+    static boolean searchMatrix(ArrayList<ArrayList<Integer>> mat, int target) {
+        int n = mat.size();
+        int m = mat.get(0).size();
+
+        for (int i = 0; i < n; i++) {
+            if (mat.get(i).get(0) <= target && target <= mat.get(i).get(m - 1)) {
+                // Search the row using binary search
+                int result = binarySearch(mat.get(i), m, target);
+                if (result != -1) {
+                    return true; // Found the target in the matrix
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+
+
+
+
+      
