@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+public final class Solution {
+    public static int findMedian(int[][] arr, int row, int col) {
+        int[] median = new int[row * col];
+        int index = 0;
+
+        // Copy values from arr to median array
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                median[index] = arr[i][j];
+                index++;
+            }
+        }
+
+        // Sort the median array
+        Arrays.sort(median);
+
+        // Calculate the median
+        int middleIndex = (row * col) / 2;
+        int medianValue;
+        if ((row * col) % 2 == 0) {
+            medianValue = (median[middleIndex - 1] + median[middleIndex]) / 2;
+        } else {
+            medianValue = median[middleIndex];
+        }
+
+        return medianValue;
+    }
+}
+
