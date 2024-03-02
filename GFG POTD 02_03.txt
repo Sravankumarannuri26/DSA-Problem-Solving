@@ -1,0 +1,19 @@
+public class Solution {
+    public static Node reverseDLL(Node head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node current = head;
+        Node last = null;
+
+        while (current != null) {
+            last = current.prev;
+            current.prev = current.next;
+            current.next = last;
+            current = current.prev;
+        }
+
+        // After the loop, 'last' will be pointing to the new head of the reversed DLL
+        return last.prev;    
+    }
+}
