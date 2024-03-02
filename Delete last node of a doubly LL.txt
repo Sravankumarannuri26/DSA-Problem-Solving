@@ -1,0 +1,28 @@
+public class Solution {
+    public static Node deleteLastNode(Node head) {
+        // Check if the list is empty
+        if (head == null) {
+            return null; // Nothing to delete
+        }
+
+        // Check if there is only one node in the list
+        if (head.next == null) {
+            return null; // Set head to null if it's the only node
+        }
+
+        Node tail = head;
+        Node prev = null;
+
+        // Traverse to the last node
+        while (tail.next != null) {
+            prev = tail;
+            tail = tail.next;
+        }
+
+        // Remove the last node
+        prev.next = null;
+        tail.prev = null;
+
+        return head;
+    }
+}
