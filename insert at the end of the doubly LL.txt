@@ -1,0 +1,23 @@
+public class Solution {
+    public static Node insertAtTail(Node list, int K) {
+        // Check if the list is empty
+        if (list == null) {
+            return new Node(K, null, null);
+        }
+
+        Node temp = list;
+
+        // Traverse to the last node
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        // Create a new node with value K
+        Node newTail = new Node(K, null, temp);
+
+        // Update the next pointer of the previous tail
+        temp.next = newTail;
+
+        return list;
+    }
+}
