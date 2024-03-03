@@ -1,0 +1,77 @@
+///brute
+
+
+
+public class Solution {
+    public static Node oddEvenList(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node temp = head;
+        int[] arr = new int[100]; // Assuming a fixed size for the array, adjust as needed
+        int i = 0;
+
+        while (temp != null && temp.next != null) {
+            arr[i] = temp.data;
+            i++;
+            temp = temp.next.next;
+        }
+
+        if (temp != null) {
+            arr[i] = temp.data;
+            i++;
+        }
+
+        temp = head.next;
+
+        while (temp != null && temp.next != null) {
+            arr[i] = temp.data;
+            i++;
+            temp = temp.next.next;
+        }
+
+        if (temp != null) {
+            arr[i] = temp.data;
+            i++;
+        }
+
+        int j = 0;
+        temp = head;
+
+        while (temp != null) {
+            temp.data = arr[j];
+            j++;
+            temp = temp.next;
+        }
+
+        return head;
+    }
+}
+
+
+
+//optimal
+
+
+
+public class Solution {
+    public static Node oddEvenList(Node head) {
+        if(head==null  || head.next==null){
+            return head;
+        }
+        Node odd=head;
+        Node even=head.next;
+        Node evenHead=even;
+        while(even!=null && even.next!=null){
+            odd.next=odd.next.next;
+            even.next=even.next.next;
+            odd=odd.next;
+            even=even.next;
+            
+            
+        }
+        odd.next=evenHead;
+        return head;
+    }
+}
