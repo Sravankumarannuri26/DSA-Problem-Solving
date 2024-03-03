@@ -1,0 +1,22 @@
+class Solution {
+    String printLargest(int n, String[] arr) {
+        // Custom comparator to sort strings based on the largest number
+        Comparator<String> customComparator = (s1, s2) -> (s2 + s1).compareTo(s1 + s2);
+
+        // Sort the strings using the custom comparator
+        Arrays.sort(arr, customComparator);
+
+        // If the largest number is "0", return "0" as the result
+        if (arr[0].equals("0")) {
+            return "0";
+        }
+
+        // Concatenate the sorted strings to get the largest number
+        StringBuilder result = new StringBuilder();
+        for (String str : arr) {
+            result.append(str);
+        }
+
+        return result.toString();
+    }
+}
