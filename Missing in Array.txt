@@ -1,0 +1,20 @@
+Missing in Array-gfg
+
+
+
+class Solution {
+
+    // Note that the size of the array is n-1
+    int missingNumber(int n, int arr[]) {
+        int sum=0,sum1=0;
+
+        for(int i=1;i<=n;i++){
+            sum=sum+i;
+            
+        }
+        for(int i=0;i<n-1;i++){
+            sum1=sum1+arr[i];
+        }
+        return sum-sum1;
+    }
+}
