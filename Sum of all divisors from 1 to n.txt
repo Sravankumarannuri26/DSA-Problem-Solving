@@ -1,0 +1,39 @@
+//optimal
+
+class Solution{
+    static long sumOfDivisors(int N){
+        long sum=0;
+        for(int i=1;i<=N;i++){
+            sum+=(N/i)*i;
+        }
+        return sum;
+    }
+}
+
+
+
+//brute
+
+
+class Solution {
+    static long sumOfDivisors(int N) {
+        long totalSum = 0;
+        
+        // Iterate over each integer i from 1 to N
+        for (int i = 1; i <= N; i++) {
+            long sumOfDivisorsOfI = 0;
+            
+            // Find and sum all divisors of i
+            for (int j = 1; j <= i; j++) {
+                if (i % j == 0) {
+                    sumOfDivisorsOfI += j;
+                }
+            }
+            
+            // Add sum of divisors of i to the total sum
+            totalSum += sumOfDivisorsOfI;
+        }
+        
+        return totalSum;
+    }
+}
