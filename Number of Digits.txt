@@ -1,0 +1,21 @@
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+    static int countDigit(long x) {
+        int count=0;
+        while(x>0){
+            long lastDigit=x%10;
+            count++;
+            x/=10;
+        }
+        return count;
+        
+    }
+}
+
+
+another way to do it is we can use logarithmic 
+
+
+log10(7789)+1;
