@@ -1,0 +1,33 @@
+///using backtracking
+
+class Solution {
+    private static void print(int i,int n){
+        if(i>n){
+            return;
+        }
+        print(i+1,n);
+        System.out.print(i+" ");
+    }
+
+    void printNos(int N) {
+        print(1,N);
+    }
+}
+
+
+//normal way
+
+class Solution {
+    private static void print(int i,int n){
+        if(i<1){
+            return;
+        }
+        
+        System.out.print(i+" ");
+        print(i-1,n);
+    }
+
+    void printNos(int N) {
+        print(N,N);
+    }
+}
