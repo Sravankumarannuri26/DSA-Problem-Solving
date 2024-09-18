@@ -1,0 +1,33 @@
+//parameterised way
+
+
+class Solution {
+    private static long summation(long n, long sum) {
+        if (n < 1) {
+            return sum;
+        }
+        return summation(n - 1, sum + (n * n * n));
+    }
+
+    long sumOfSeries(long n) {
+        return summation(n, 0);
+    }
+}
+
+
+///functional wayy
+
+
+class Solution {
+   
+    private static long cubeSum(long n){
+        if(n==0){
+            return 0;
+        }
+        return ((n*n*n)+cubeSum(n-1));
+    }
+
+    public long sumOfSeries(long n) {
+        return cubeSum(n);
+    }
+}
