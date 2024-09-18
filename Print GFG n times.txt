@@ -1,0 +1,13 @@
+class Solution {
+    private static void print(int i,int n){
+        if(i>n){
+            return;
+        }
+        System.out.print("GFG"+ " ");
+        print(i+1,n);
+    }
+
+    void printGfg(int N) {
+        print(1,N);
+    }
+}
