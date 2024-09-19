@@ -1,0 +1,20 @@
+class Solution {
+    static ArrayList<Long> factorialNumbers(long n) {
+        ArrayList<Long>l= new ArrayList<>();
+       long sum = 0;
+        for(int i=1;sum<=n;i++){
+            sum=fact(i);
+            if(sum<=n){
+            l.add(sum);
+            }
+        }
+        return l;
+    }
+static long fact(long i){
+    if (i==1){
+    return 1;    
+    }else{
+    return i*fact(i-1);
+}
+}
+}
