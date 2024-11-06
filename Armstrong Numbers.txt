@@ -1,13 +1,17 @@
 class Solution {
-    static String armstrongNumber(int n) {
-        int num=0;
-        int originalN=n;
-        while(n!=0){
+    static boolean armstrongNumber(int n) {
+        int sum=0;
+        int original=n;
+        while(n>0){
             int last=n%10;
-            num=num+last*last*last;
-            n/=10;
+            sum=sum+(last*last*last);
+            n=n/10;
         }
-        if(num==originalN) return "true";
-        else return "false";
+        if(sum==original){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
