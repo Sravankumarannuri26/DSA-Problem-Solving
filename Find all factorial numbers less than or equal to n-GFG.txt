@@ -1,0 +1,14 @@
+class Solution {
+    public static void function(long fact,long i,ArrayList<Long> list,long n ){
+        if(fact>n){
+            return;
+        }
+        list.add(fact);
+        function(fact*(i+1),i+1,list,n);
+    }
+    static ArrayList<Long> factorialNumbers(long n) {
+        ArrayList<Long> list=new ArrayList();
+        function(1,1,list,n);
+        return list;
+    }
+}
