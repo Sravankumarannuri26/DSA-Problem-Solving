@@ -1,0 +1,12 @@
+class Solution {
+    public static int function(int n){
+        if(n==0){
+            return 0;
+        }
+        return (n*n*n)+function(n-1);
+        
+    }
+    long sumOfSeries(long n) {
+        return function((int)n);
+    }
+}
