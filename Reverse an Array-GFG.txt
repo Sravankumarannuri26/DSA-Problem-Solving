@@ -1,0 +1,40 @@
+class Solution {
+    static void function(int arr[], int l, int r) {
+        if (l >= r) { 
+            return;
+        }
+        
+        
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+        
+        
+        function(arr, l + 1, r - 1);
+    }
+    
+    public void reverseArray(int arr[]) {
+        function(arr, 0, arr.length - 1);  
+    }
+}
+
+
+//single pointer
+
+
+class Solution {
+    static void function(int arr[],int i,int n){
+        if(i>=n/2){
+            return;
+        }
+        int temp=arr[i];
+        arr[i]=arr[n-i-1];
+        arr[n-i-1]=temp;
+        function(arr,i+1,n);
+    }
+    
+    
+    public void reverseArray(int arr[]) {
+        function(arr, 0, arr.length);  
+    }
+}
