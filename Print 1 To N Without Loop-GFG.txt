@@ -1,0 +1,13 @@
+class Solution {
+    public static void function(int i,int n){
+        if(i>n){
+            return ;
+        }
+        System.out.print(i+ " ");
+        function(i+1,n);
+    }
+
+    public void printNos(int n) {
+        function(1,n);
+    }
+}
