@@ -1,0 +1,30 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        return checkPalindrome(s.toLowerCase(), 0, s.length() - 1);
+    }
+    
+    private boolean checkPalindrome(String s, int left, int right) {
+        // Base case: if pointers have crossed, it's a palindrome
+        if (left >= right) {
+            return true;
+        }
+        
+        // Move left pointer forward if it's not alphanumeric
+        if (!Character.isLetterOrDigit(s.charAt(left))) {
+            return checkPalindrome(s, left + 1, right);
+        }
+        
+        // Move right pointer backward if it's not alphanumeric
+        if (!Character.isLetterOrDigit(s.charAt(right))) {
+            return checkPalindrome(s, left, right - 1);
+        }
+        
+        // Check if characters at left and right pointers are equal
+        if (s.charAt(left) != s.charAt(right)) {
+            return false;  // Not a palindrome
+        }
+        
+        // Move both pointers inward and continue recursion
+        return checkPalindrome(s, left + 1, right - 1);
+    }
+}
