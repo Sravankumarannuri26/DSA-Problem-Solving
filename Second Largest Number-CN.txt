@@ -1,0 +1,37 @@
+import java.util.*;
+public class Solution {
+    public static int secondlargest(int a[],int n){
+        int largest=a[0];
+        int seclargest=-1;
+        for(int i=1;i<=n-1;i++){
+            if(a[i]>largest){
+                seclargest=largest;
+                largest=a[i];
+            }
+            else if(a[i]<largest && a[i]>seclargest){
+                seclargest=a[i];
+            }
+        }
+        return seclargest;
+    }
+    public static int secondsmallest(int a[],int n){
+        int smallest=a[0];
+        int secsmallest=Integer.MAX_VALUE;
+        for(int i=0;i<=n-1;i++){
+            if(a[i]<smallest){
+                secsmallest=smallest;
+                smallest=a[i];
+            }
+            else if(a[i]!=smallest && a[i]<secsmallest){
+                secsmallest=a[i];
+            }
+        }
+        return secsmallest;
+
+    }
+    public static int[] getSecondOrderElements(int n, int []a) {
+        int slargest=secondlargest(a,n);
+        int ssmallest=secondsmallest(a,n);
+        return new int[]{slargest,ssmallest};
+    }
+}
