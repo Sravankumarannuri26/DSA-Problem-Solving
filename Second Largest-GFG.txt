@@ -1,0 +1,30 @@
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        //finding largest element
+        int n=arr.length;
+        int largest=arr[0];
+        for(int i=0;i<=n-1;i++){
+           if(arr[i]>largest){
+               largest=arr[i];
+           } 
+        }
+        
+        //finding second largest element
+        
+        int slargest=-1;
+        for(int i=0;i<=n-1;i++){
+            if(arr[i]>slargest && arr[i] != largest){
+                slargest=arr[i];
+                
+            }
+        }
+        
+        
+        return slargest;
+        
+        
+    }
+}
+
+
+
